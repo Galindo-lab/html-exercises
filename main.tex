@@ -1,0 +1,60 @@
+
+\include{packages}
+\include{commands}
+
+\graphicspath{
+    {resources/}
+}
+
+\geometry{   
+    a5paper,
+    %showframe,
+    left=.75in,
+    right=.75in,
+    top=1in,
+    bottom=1in
+}
+
+% macros
+\newcommand{\theauthor}{ 
+    Ursula K. Le Guin
+}
+\newcommand{\theoriginaltitle}{
+    The carrier bag theory of fiction
+}
+\newcommand{\thetitle}{
+    La Teoría de la Bolsa de \\ 
+    Transporte de la Ficción
+}
+\newcommand{\thesubtitle}{
+    en inglés y español
+}
+\newcommand{\thedate}{
+    1985
+}
+
+% metadatos del libro
+\title{\theoriginaltitle}
+\author{\theauthor}
+\date{\thedate}
+
+
+% Documento
+\begin{document}
+    \setlength\parindent{0pt}   % eliminar el intentado
+    \setlength{\parskip}{0.75em}   % expandir el espacio entre párrafos
+    
+    
+    \include{estruct/portadilla}
+    \include{estruct/contraportada}
+    \include{estruct/portada}
+    \include{estruct/legal}
+    
+    \include{content/español}
+    
+    \include{content/cortinilla}
+    \blankpage
+    
+    \include{content/inglés}
+    \include{estruct/colofón}
+\end{document}

@@ -1,0 +1,17 @@
+
+% Es la hoja que antecede a la portada y la primera página impar impresa, en
+% la que solo se presenta el título de la obra y el autor resumidos 
+% y, a veces, la colección o un resumen antes del inicio del libro. 
+% Originalmente era una hoja de protección, a modo de cubierta.
+
+\begin{center} % Alinear a la izquierda
+    \thispagestyle{empty}     % desactiva los numeros de pagina
+    \addtocounter{page}{-1}   % restar uno a el numero de pagina
+    
+    \vspace*{0.75in}
+    \scshape      % Sans-serif
+    \Large
+        \thetitle \\
+        
+    \vspace*{\fill} 
+\end{center}

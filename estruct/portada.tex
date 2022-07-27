@@ -1,0 +1,26 @@
+
+% Es la página en la que figuran el título completo del libro, el nombre
+% completo del autor o autores, el lugar y el año de la impresión, la 
+% editorial (y en la mayoría de casos su marca) y la colección
+
+\begin{titlepage}
+    \vspace*{0.75in}
+    \begin{flushright} % Alinear a la izquierda
+        \sffamily      % Sans-serif
+        \large 
+            \thesubtitle \\
+        \huge
+            \thetitle \\
+        \vspace{0.50in}
+        \Large
+            \theauthor \\
+            \thedate
+    \end{flushright}
+    \vspace*{\fill}     
+    
+    \begin{center}
+        \includegraphics[width=0.75in]{logo.png}
+    \end{center}
+
+    \addtocounter{page}{-1}
+\end{titlepage}
