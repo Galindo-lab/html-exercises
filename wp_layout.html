@@ -86,11 +86,9 @@
         ]
     </script>
 
-
-
 </head>
 
-<body class="bg-light user-select-none" x-data="calendarApp">
+<body class="user-select-none" x-data="calendarApp">
 
     <!-- Navbar -->
     <nav class="navbar fixed-top bg-body-tertiary ">
@@ -109,7 +107,7 @@
                 <!-- Dropdown -->
                 <div class="flex-shrink-0 dropdown">
                     <a href="#" class="d-block btn" data-bs-toggle="dropdown" aria-expanded="true"
-                        data-bs-auto-close="inside">
+                        >
                         <i class="bi bi-three-dots-vertical"></i>
                     </a>
                     <ul class="dropdown-menu text-small shadow-sm"
@@ -126,9 +124,8 @@
         </div>
     </nav>
 
-
     <!-- Cuerpo de la aplicación -->
-    <div class="container-flex bg-light" style="margin-block: 4rem;">
+    <div class="container-flex" style="margin-block: 4rem; margin-bottom: 5rem;">
 
         <!-- Barra de busqueda -->
         <div class="mx-2">
@@ -151,7 +148,7 @@
                 <label class="btn btn-outline-primary" for="btnradio3">Favoritos</label>
 
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio4">Favoritos</label>
+                <label class="btn btn-outline-primary" for="btnradio4">Grupos</label>
             </div>
         </div>
 
@@ -174,6 +171,12 @@
             </div>
         </template>
 
+        <!-- Mensaje al final -->
+        <div class="text-center small text-secondary pt-3">
+            Copia de WhatsApp en <br>
+            <a href="https://getbootstrap.com/">Bootstrap5.3</a>
+        </div>
+
     </div>
 
     <!-- Barra inferior -->
@@ -185,7 +188,6 @@
                 <i class="bi bi-plus-lg"></i>
             </a>
         </div>
-
 
         <div class="d-flex justify-content-center border-top bg-light align-items-end">
 
@@ -214,6 +216,7 @@
             </a>
 
         </div>
+
     </div>
 
 </body>
