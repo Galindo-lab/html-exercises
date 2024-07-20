@@ -19,68 +19,80 @@
     <!-- Alpine -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('calendarApp', () => ({
+                chats: [],
+                init() {
+                    this.chats = JSON.parse(document.getElementById('placeholder-data').textContent) || [];
+                },
+            }));
+        });
+    </script>
+
     <!-- placeholder data -->
     <script id="placeholder-data">
         [
             {
                 "name": "Carlos B. Barrera García",
                 "text": "Este mensaje puede contener cualquier información 📄",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/110/110"
             },
             {
                 "name": "María J. López Fernández",
                 "text": "Mensaje de prueba con información relevante 🔍",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/100/100"
             },
             {
                 "name": "Juan P. Martínez Torres",
                 "text": "Información sobre el proyecto actual 📊",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/101/101"
             },
             {
                 "name": "Ana M. Ruiz Sánchez",
                 "text": "Este es un mensaje de ejemplo 📝",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/102/102"
             },
             {
                 "name": "Luis F. García López",
                 "text": "Contenido relevante para la discusión 💬",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/104/104"
             },
             {
                 "name": "Elena V. Pérez Martínez",
                 "text": "Datos importantes a considerar 📈",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/105/105"
             },
             {
                 "name": "Ricardo A. Torres Ramírez",
                 "text": "Este mensaje contiene información crucial 🚨",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/106/106"
             },
             {
                 "name": "Laura E. Fernández Gómez",
                 "text": "Mensaje con detalles específicos 🔎",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/107/107"
             },
             {
                 "name": "José L. Ramírez Ruiz",
                 "text": "Información para el siguiente paso ➡️",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/108/108"
             },
             {
                 "name": "Carmen D. Moreno Pérez",
                 "text": "Detalles adicionales sobre el tema 🗒️",
-                "icon": "https://via.placeholder.com/40"
+                "icon": "https://loremflickr.com/109/109"
             }
         ]
     </script>
+
 
 
 </head>
 
 <body class="bg-light user-select-none" x-data="calendarApp">
 
-
+    <!-- Navbar -->
     <nav class="navbar fixed-top bg-body-tertiary ">
         <div class="container-fluid pr-0">
             <a class="navbar-brand" href="#">
@@ -115,6 +127,7 @@
     </nav>
 
 
+    <!-- Cuerpo de la aplicación -->
     <div class="container-flex bg-light" style="margin-block: 4rem;">
 
         <!-- Barra de busqueda -->
@@ -130,10 +143,10 @@
             <div class="btn-group-sm">
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                 <label class="btn btn-outline-primary" for="btnradio1">Todos</label>
-              
+
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
                 <label class="btn btn-outline-primary" for="btnradio2">No leídos</label>
-              
+
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
                 <label class="btn btn-outline-primary" for="btnradio3">Favoritos</label>
 
@@ -163,9 +176,7 @@
 
     </div>
 
-
-
-
+    <!-- Barra inferior -->
     <div class="fixed-bottom ">
 
         <!-- Botón flotante -->
@@ -206,18 +217,5 @@
     </div>
 
 </body>
-
-
-
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('calendarApp', () => ({
-            chats: [],
-            init() {
-                this.chats = JSON.parse(document.getElementById('placeholder-data').textContent) || [];
-            },
-        }));
-    });
-</script>
 
 </html>
