@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Aquí se define la transición entre vistas */
+        ::view-transition-new(root),
+        ::view-transition-old(root) {
+            animation-duration: 800ms;
+            animation-timing-function: ease-out;
+            animation-direction: normal;
+        }
+
+        ::view-transition-old(root) {
+            animation-name: slide-out;
+        }
+
+        ::view-transition-new(root) {
+            animation-name: slide-in;
+            mix-blend-mode: normal;
+        }
+
+        @keyframes slide-out {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-20%);
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+    <script>
+
+        document.startViewTransition(() => updateDOM());
+
+
+        function navigateTo(url) {
+            document.startViewTransition(() => {
+                window.location.href = url;
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Hola</h1>
+    <button onclick="navigateTo('wp_layout.html')">Test</a>
+</body>
+
+</html>
