@@ -21,32 +21,94 @@
 
 </head>
 
-<body class="bg-dark">
-    <div class="container-flex">
-        <div class="row fixed-bottom bg-light text-center p-2 align-items-end">
+<body class="bg-light">
 
-            <button class="text-center col-3 btn  btn-sm p-0">
+
+    <nav class="navbar fixed-top bg-body-tertiary ">
+        <div class="container-fluid pr-0">
+            <a class="navbar-brand" href="#">
+                <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" width="30" alt="">
+                Bootstrap
+            </a>
+
+            <div class="d-flex align-items-center">
+                <!-- Camara -->
+                <a class="btn btn-large" href="">
+                    <i class="bi bi-camera"></i>
+                </a>
+
+                <!-- Dropdown -->
+                <div class="flex-shrink-0 dropdown">
+                    <a href="#" class="d-block btn" data-bs-toggle="dropdown" aria-expanded="true"
+                        data-bs-auto-close="inside">
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow-sm"
+                        style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 34px, 0px);"
+                        data-popper-placement="bottom-end">
+                        <li><a class="dropdown-item py-2" href="#">Nuevo grupo</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Nueva difusión</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Dispositivos vinculados</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Mensajes destacados</a></li>
+                        <li><a class="dropdown-item py-2" href="#">Ajustes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container bg-light" style="margin-block: 4.5rem;">
+        <div class="row">
+            <div class="col-2 col-sm-2">
+                <img src="https://github.com/mdo.png" alt="mdo" width="48" height="48" class="rounded-circle">
+            </div>
+            <div class="col-10 text-start text-truncate">
+                <span class="fw-bold">Luis Eduardo Galindo Amaya</span>
+                <br>
+                <span class="text-secondary small">Este texto tiene puntos suspensivos cuando el texto es muy
+                    largo</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="fixed-bottom ">
+
+        <!-- Botón flotante -->
+        <div class="text-end d-md-none">
+            <a href="#today" class="btn btn-lg btn-primary shadow-sm m-3">
+                <i class="bi bi-plus-lg"></i>
+            </a>
+        </div>
+
+
+        <div class="d-flex justify-content-center border-top bg-light align-items-end">
+
+            <button class="col-3 text-center btn btn-sm py-2">
                 <i class="bi bi-chat"></i>
                 <br>
-                <span class="small">chats</span>
+                <span class="small fw-bold">chats</span>
             </button>
 
-            <button class="text-center col-3 btn  btn-sm p-0">
+            <button class="col-3 text-center btn btn-sm py-2">
                 <i class="bi bi-archive"></i>
                 <br>
-                <span class="small p-0">Novedades</span>
+                <span class="small fw-bold">Novedades</span>
             </button>
 
-            <button class="text-center col-3 btn btn-sm p-0">
+            <button class="col-3 text-center btn btn-sm py-2">
                 <i class="bi bi-people"></i>
                 <br>
-                <span class="small p-0">Comunidades</span>
+                <span class="small fw-bold">Comunidades</span>
             </button>
 
-            <button class="text-center col-3 btn  btn-sm p-0">
+            <button class="col-3 text-center btn btn-sm py-2">
                 <i class="bi bi-telephone"></i>
                 <br>
-                <span class="small p-0">Llamadas</span>
+                <span class="small fw-bold">Llamadas</span>
             </button>
 
         </div>
