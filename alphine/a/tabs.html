@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    
+    <link rel="stylesheet" href="Lumpia.css">
+    <!--
+    <script src="belbin.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bamboo.css/dist/light.min.css"
+    />
+    -->
+
+
+  </head>
+
+  <body>
+    <dialog id="dialog">
+      <b>Hola</b>
+      <p>Greetings, one and all!</p>
+
+      <input type="range" name="" id="">
+
+      <form method="dialog">
+        <button>Cerrar</button>
+        <button>Aceptar</button>
+      </form>
+
+    </dialog>
+
+    <h1>HOla</h1>
+    <hr />
+
+    <button onclick="document.querySelector('dialog').showModal()">abrir dialog</button>
+
+    <pre>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, eligendi
+ullam! Quo, dolorum facilis corporis, numquam eveniet pariatur omnis debitis repudiandae quibusdam maiores mollitia magnam quia veniam ut earum cumque!
+</pre>
+
+    <div x-data="{tab: 1}">
+      <div>
+        <a x-on:click="tab=1">[Tab #1]</a>
+        <a x-on:click="tab=2">[Tab #2]</a>
+        <a x-on:click="tab=3">[Tab #3]</a>
+      </div>
+      <div>
+        <div x-show="tab === 1"><h1>Tab 1</h1></div>
+        <div x-show="tab === 2"><h1>Tab 2</h1></div>
+        <div x-show="tab === 3"><h1>Tab 3</h1></div>
+      </div>
+    </div>
+
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque
+      perferendis quis beatae. Dolorum voluptatum soluta voluptas et natus amet
+      dolore quibusdam nobis incidunt temporibus? Ad dolorum soluta consequatur
+      ab facere?
+    </p>
+
+    <input type="text">
+  </body>
+
+  <script></script>
+</html>

@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras con Alpine.js</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cart {
+            margin-top: 20px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Carrito de Compras</h1>
+
+    <div x-data="cartApp()">
+        <div class="product" data-id="1" data-name="Producto 1" data-price="10">
+            <span>Producto 1 - $10</span>
+            <button @click="addToCart($el)">Agregar al Carrito</button>
+        </div>
+
+        <div class="product" data-id="2" data-name="Producto 2" data-price="15">
+            <span>Producto 2 - $15</span>
+            <button @click="addToCart($el)">Agregar al Carrito</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Producto 3" data-price="20">
+            <span>Producto 3 - $20</span>
+            <button @click="addToCart($el)">Agregar al Carrito</button>
+        </div>
+
+        <div class="cart">
+            <h2>Carrito</h2>
+            <template x-if="cart.length === 0">
+                <p>El carrito está vacío.</p>
+            </template>
+            <ul>
+                <template x-for="(item, index) in cart" :key="index">
+                    <li>
+                        <span x-text="item.name"></span> - 
+                        <span x-text="`$${item.price}`"></span>
+                        <button @click="removeFromCart(index)">Eliminar</button>
+                    </li>
+                </template>
+            </ul>
+            <p>Total: $<span x-text="total"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function cartApp() {
+            return {
+                cart: [],
+                total: 0,
+
+                addToCart(element) {
+                    // Extrae los datos del producto directamente del HTML
+                    const product = {
+                        id: element.parentElement.getAttribute('data-id'),
+                        name: element.parentElement.getAttribute('data-name'),
+                        price: parseFloat(element.parentElement.getAttribute('data-price'))
+                    };
+                    this.cart.push(product);
+                    this.calculateTotal();
+                },
+
+                removeFromCart(index) {
+                    this.cart.splice(index, 1);
+                    this.calculateTotal();
+                },
+
+                calculateTotal() {
+                    this.total = this.cart.reduce((sum, item) => sum + item.price, 0);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
