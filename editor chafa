@@ -1,0 +1,147 @@
+<template>
+  <div>
+    <div class="toolbar">
+      <button @click="applyStyle()">B</button>
+    </div>
+
+    <div ref="editor" class="editor" contenteditable="true" @input="updateCode">
+      Escribe algo aquí...
+    </div>
+
+    <div class="code-view">
+      <pre>{{ escapedHtml }}</pre>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const editor = ref<HTMLElement | null>(null)
+const escapedHtml = ref<string>('')
+
+function getSelectedArea(): Range | null {
+  const selection = window.getSelection()
+  if (!selection || selection.rangeCount === 0) return null
+
+  const range = selection.getRangeAt(0)
+  if (range.collapsed) return null
+
+  return range
+}
+
+function createBoldSection(range: Range) {
+  const boldedFragment = document.createDocumentFragment();
+
+  const treeWalker = document.createTreeWalker(
+    range.cloneContents(),
+    NodeFilter.SHOW_TEXT,
+    null
+  );
+
+  let currentNode: Node | null;
+
+  while ((currentNode = treeWalker.nextNode())) {
+    const text = currentNode.textContent || '';
+    const tokens = text.match(/(\S+|\s+)/g) || [];
+
+    tokens.forEach(token => {
+
+      if (/\S+/.test(token) && !isNodeOrParentBold(currentNode)) {
+        const b = document.createElement('b');
+        b.textContent = token;
+        boldedFragment.appendChild(b);
+      } else {
+        boldedFragment.appendChild(document.createTextNode(token));
+      }
+    });
+  }
+
+  range.deleteContents();
+  range.insertNode(boldedFragment);
+}
+
+
+function applyStyle(): void {
+  let range = getSelectedArea();
+  if (!range) return;
+
+  range = expandRangeToIncludeBold(range);
+
+  createBoldSection(range);
+  escapedHtml.value = editor.value?.innerHTML || '';
+}
+
+
+
+function expandRangeToIncludeBold(range: Range): Range {
+  const startContainer = range.startContainer;
+  const endContainer = range.endContainer;
+
+  const startBoldParent = findBoldParent(startContainer);
+  const endBoldParent = findBoldParent(endContainer);
+
+  if (startBoldParent && range.startOffset === 0) {
+    range.setStartBefore(startBoldParent);
+  }
+
+  if (
+    endBoldParent &&
+    endContainer.nodeType === Node.TEXT_NODE &&
+    range.endOffset === endContainer.textContent?.length
+  ) {
+    range.setEndAfter(endBoldParent);
+  }
+
+  return range;
+}
+
+function findBoldParent(node: Node | null): HTMLElement | null {
+  while (node && node.parentNode) {
+    if (
+      node.nodeType === Node.ELEMENT_NODE &&
+      ((node as HTMLElement).tagName === 'B' || (node as HTMLElement).tagName === 'STRONG')
+    ) {
+      return node as HTMLElement;
+    }
+
+    if (
+      node.parentNode.nodeType === Node.ELEMENT_NODE &&
+      ((node.parentNode as HTMLElement).tagName === 'B' || (node.parentNode as HTMLElement).tagName === 'STRONG')
+    ) {
+      return node.parentNode as HTMLElement;
+    }
+
+    node = node.parentNode;
+  }
+
+  return null;
+}
+
+function isNodeOrParentBold(node: Node | null): boolean {
+  return !!findBoldParent(node);
+}
+
+
+
+</script>
+
+<style scoped lang="scss">
+.toolbar {
+  margin-bottom: 8px;
+
+  button {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+.editor {
+  border: 1px solid white;
+  padding: 10px;
+  min-height: 150px;
+  outline: none;
+  margin-bottom: 20px;
+}
+</style>
